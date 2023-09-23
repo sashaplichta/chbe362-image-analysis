@@ -1,1 +1,2 @@
 # chbe362-image-analysis
+Basic image processing for a chemical engineering lab with the goal of processing video data to characterize the concentration gradient of a dye (food coloring) in water. Data will be used to find a solution to Fick's second law in order to solve for the diffusion coefficient of the dye in water and then use the Stokes-Einstein Equation to solve for molecular size.
