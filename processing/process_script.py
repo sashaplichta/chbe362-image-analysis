@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from ficks_regression import match
 
 class ficks():
     def __init__(self, c_s, c_0, D):
