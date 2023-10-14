@@ -20,6 +20,7 @@ class preprocess():
         self.conc = self.name.split("_")[1]
         self.t = self.name.split("_")[2]
         self.gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        # self.D = None
 
         x = np.arange(0, 1000).reshape(-1, 1)
 
@@ -34,10 +35,10 @@ class preprocess():
         # Scale data to linear
 
         i, j = self.get_linear(self.data)   
-        print(i, j)     
 
         self.ydata = np.log((1 / self.data[i:j]) - 1)
 
+        # self.shifted_func, self.func = self.fit_func(x[i:j], self.ydata)
         self.func = self.fit_func(x[i:j], self.ydata)
 
     def get_linear(self, x):
@@ -68,7 +69,8 @@ class preprocess():
         return np.flip(column_average)[:1000]
     
     def fit_func(self, x, y):
-        model = LinearRegression().fit(x, y)
+        model = LinearRegression(fit_intercept=False).fit(x, y)
         alpha = model.coef_[0]
         beta = model.predict([[0]])[0]
+        # return sigmoid(alpha, 0), s
         return sigmoid(alpha, beta)
