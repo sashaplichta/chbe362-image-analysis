@@ -20,6 +20,7 @@ class preprocess():
         self.conc = self.name.split("_")[1]
         self.t = self.name.split("_")[2]
         self.gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        self.fick = None
 
         x = np.arange(0, 1000).reshape(-1, 1)
 
@@ -33,8 +34,7 @@ class preprocess():
 
         # Scale data to linear
 
-        i, j = self.get_linear(self.data)   
-        print(i, j)     
+        i, j = self.get_linear(self.data)       
 
         self.ydata = np.log((1 / self.data[i:j]) - 1)
 
